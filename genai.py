@@ -5,8 +5,8 @@ from langchain_core.messages import HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 # Title of the Streamlit app
-st.set_page_config(page_title="Image AI", page_icon="./logo.jpg")
-st.title("Image AI")
+st.set_page_config(page_title="ImaGenAI", page_icon="./image.png")
+st.title("ImaGenAI")
 
 # Upload an image
 uploaded_file = st.file_uploader("Choose an image", type=["png","jpg"])
@@ -14,14 +14,11 @@ uploaded_file = st.file_uploader("Choose an image", type=["png","jpg"])
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
     st.image(img)
-    # Ask a question
-    # question = st.text_area("Question", placeholder="What do you want to know about the image?")
     question = st.chat_input(placeholder="What do you want to know about the image?")
-# Submit button
     if question:
         with st.chat_message(name="user",avatar="./user.png"):
             st.write(question)
-        with st.chat_message(name="ai",avatar="./logo.jpg"):
+        with st.chat_message(name="ai",avatar="./logo.png"):
             with st.spinner():
                 model = ChatGoogleGenerativeAI(model="gemini-pro-vision")
                 message = HumanMessage(content=[
