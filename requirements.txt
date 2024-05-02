@@ -1,0 +1,3 @@
+Pillow
+langchain_core
+langchain-google-genai
